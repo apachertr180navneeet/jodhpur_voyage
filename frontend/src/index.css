@@ -1,0 +1,331 @@
+/* ==========================================================================
+   JODHPUR VOYAGE - GLOBAL BRIDGING & UTILITY STYLES
+   ========================================================================== */
+
+:root {
+  /* Backward-compatibility aliases with the prototype design system */
+  --primary-color: var(--color-primary, #1D747A);
+  --primary-hover: var(--color-primary-hover, #155A5F);
+  --secondary-color: var(--color-dark, #1A2B2C);
+  --gold-color: var(--color-secondary, #C58B39);
+  --gold-hover: var(--color-secondary-hover, #A9732B);
+  --bg-cream: var(--color-cream, #F8FBFB);
+  --font-serif: var(--font-heading, 'Playfair Display', Georgia, serif);
+  --font-sans: var(--font-nav, 'Montserrat', sans-serif);
+}
+
+/* Ensure smooth modal display and helper utilities */
+.text-center {
+  text-align: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Fix for any React router Links that use btn or card classes */
+a.destination-card-link,
+a.mega-inspiration-card,
+a.search-tag {
+  cursor: pointer;
+}
+
+.destinations-carousel-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  padding: 0.5rem 0 1rem 0;
+}
+
+.destinations-carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.destinations-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  flex-shrink: 0;
+}
+
+.testimonial-slider {
+  position: relative;
+  min-height: 180px;
+}
+
+.testimonial-item {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.testimonial-item.active {
+  display: block;
+  opacity: 1;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+
+.hero-slider-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 580px;
+}
+
+.hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.region-card.hidden {
+  display: none !important;
+}
+
+/* Cleaned HTML Content Styles (WordPress & Rich Text Support) */
+.tour-overview-content img,
+.blog-detail-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.tour-overview-content .social-icon-img,
+.blog-detail-content .social-icon-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: inline-block;
+  margin-right: 12px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.tour-overview-content .social-icon-img:hover,
+.blog-detail-content .social-icon-img:hover {
+  transform: scale(1.1);
+}
+
+.tour-overview-content .social-links,
+.blog-detail-content .social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.tour-overview-content p,
+.blog-detail-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.tour-overview-content p:empty,
+.tour-overview-content div:empty,
+.tour-overview-content span:empty,
+.blog-detail-content p:empty,
+.blog-detail-content div:empty,
+.blog-detail-content span:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
+
+.tour-overview-content h1,
+.tour-overview-content h2,
+.tour-overview-content h3,
+.tour-overview-content h4,
+.blog-detail-content h1,
+.blog-detail-content h2,
+.blog-detail-content h3,
+.blog-detail-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--secondary-color);
+}
+
+/* Immediate Close of Mega Menu on Package Click */
+.site-header .mega-menu.force-closed,
+.site-header .nav-item.has-mega:hover .mega-menu.force-closed,
+.site-header .mega-menu.force-closed:hover {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(10px) !important;
+  transition: none !important;
+}
+
+/* Disable full-page image dark overlays for top hero banners */
+.hero-slide-overlay,
+.sur-mesure-hero-overlay,
+.collage-img-overlay,
+.mega-featured-card::before {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Ensure destination cards and editorial cards show titles, subtitle & links with bottom gradient */
+.destination-card-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(26, 43, 44, 0.92) 0%, rgba(26, 43, 44, 0.25) 55%, rgba(0, 0, 0, 0) 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 0.85rem !important;
+  color: #ffffff !important;
+  z-index: 2 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.destination-card-title {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.15rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.destination-card-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  font-family: var(--font-nav, 'Montserrat', sans-serif) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  color: #59D2D9 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.editorial-card-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(26, 43, 44, 0.85) 0%, rgba(26, 43, 44, 0.1) 60%, rgba(0, 0, 0, 0) 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 2rem !important;
+  color: #ffffff !important;
+  z-index: 2 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.editorial-card-title {
+  color: #ffffff !important;
+  font-size: 1.6rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.editorial-card-text {
+  color: #E2E8F0 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Ensure background image elements stay 100% bright, vivid, and un-shaded */
+.sur-mesure-hero-bg,
+.hero-slide-bg,
+.reviews-hero-bg,
+.blog-hero-bg,
+.rajasthan-hero-bg,
+.destinations-hero-bg,
+.infos-hero-bg,
+.about-hero-bg,
+.tour-detail-hero-bg,
+.tours-hero-bg,
+.mesure-hero-bg,
+.team-hero-bg,
+.contact-hero-bg {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Completely remove dark overlays over hero banner images FOR ALL PAGES */
+.hero-slide-overlay,
+.sur-mesure-hero-overlay,
+.reviews-hero-section::before,
+.destinations-hero-section::before,
+.tours-hero-section::before,
+.blog-hero-section::before,
+.about-hero-section::before,
+.contact-hero-section::before,
+.team-hero-section::before,
+.infos-hero-section::before,
+.hero-banner-overlay,
+.destinations-hero-overlay,
+.page-hero-overlay,
+.hero-overlay,
+.reviews-hero-section .overlay {
+  background: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* Clear dark container backgrounds behind transparent hero banners */
+.reviews-hero-section,
+.destinations-hero-section,
+.tours-hero-section,
+.blog-hero-section,
+.contact-hero-section,
+.infos-hero-section,
+.about-hero-section,
+.team-hero-section {
+  background-color: transparent !important;
+}
+
+/* Ensure hero content text stays ultra crisp and readable without dark overlay */
+.reviews-hero-content,
+.destinations-hero-content,
+.hero-slide-content,
+.page-hero-content {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 4px 20px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Reduce hero title font sizes for all pages ("font size km aani chahiye") */
+.reviews-hero-title,
+.destinations-hero-title,
+.hero-title,
+.sur-mesure-title,
+.page-hero-title,
+.blog-hero-title,
+.contact-hero-title,
+.infos-hero-title,
+.about-hero-title,
+.team-hero-title {
+  font-size: clamp(1.35rem, 2.5vw, 2.05rem) !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+}
+
+
+

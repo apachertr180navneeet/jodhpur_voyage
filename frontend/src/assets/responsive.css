@@ -1,0 +1,892 @@
+/* ==========================================================================
+   JODHPUR VOYAGE - FULLY RESPONSIVE STYLESHEET
+   Comprehensive Breakpoints:
+   - Ultra Wide: 1440px+
+   - Desktop / Laptop: 1200px - 1439px
+   - Tablet Landscape: 992px - 1199px
+   - Tablet Portrait: 768px - 991px
+   - Mobile Large / Small Tablet: 576px - 767px
+   - Mobile Small: 380px - 575px
+   - Micro Screens & Foldables: Under 380px
+   ========================================================================== */
+
+/* Hamburger Button (Mobile Only by Default) */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  padding: 0.5rem;
+  cursor: pointer;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-normal);
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mega Menu Chevron Rotation */
+.mega-chevron {
+  transition: transform 0.3s ease;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+.mega-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* Touch Input iOS Auto-Zoom Prevention & Tap Target Optimization */
+@media (max-width: 1024px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  input[type="search"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .btn,
+  .nav-link,
+  .filter-btn,
+  .form-control,
+  .mobile-nav-toggle,
+  .mobile-nav-close {
+    touch-action: manipulation;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. ULTRA WIDE SCREENS (1440px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1380px;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. TABLET LANDSCAPE & SMALL LAPTOPS (992px to 1199px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1400px) {
+  .nav-menu {
+    gap: 1.1rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .nav-menu {
+    gap: 0.85rem;
+  }
+
+  .nav-link {
+    font-size: 0.84rem;
+  }
+
+  .brand-logo-img {
+    height: 50px;
+  }
+
+  .mega-menu {
+    width: calc(100vw - 2rem);
+    padding: 1.8rem;
+  }
+
+  .mega-grid-3col {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .mega-grid-3col > div:nth-child(4) {
+    display: none; /* Hide 4th visual column on tablet landscape */
+  }
+
+  .mega-grid-2col {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.8rem;
+  }
+
+  .tours-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .home-blog-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .blog-featured-card {
+    grid-column: 1 / -1;
+    min-height: 340px;
+  }
+
+  .editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .grid-col-8, .grid-col-4, .grid-col-6 {
+    grid-column: span 1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. TABLET PORTRAIT & MOBILE DRAWER (Under 991px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .top-bar-contact {
+    gap: 1rem;
+    font-size: 0.78rem;
+  }
+
+  .top-bar-social {
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  /* Slide-Out Navigation Drawer */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -340px;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    background-color: var(--color-white);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 1100;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4.5rem 1.5rem 2rem 1.5rem;
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    gap: 0;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    font-size: 1.4rem;
+    color: var(--color-dark);
+    cursor: pointer;
+    display: block;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid var(--color-border-light);
+    padding: 0;
+  }
+
+  .nav-link {
+    padding: 0.9rem 0;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  /* Convert Mega Menus to Mobile Accordions */
+  .mega-menu,
+  .mega-menu-inspirations,
+  .mega-menu-about,
+  .mega-menu-destinations {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    padding: 0.8rem 0.6rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+    display: none;
+    background-color: #FAFAFA;
+    border-radius: var(--radius-sm);
+    box-sizing: border-box !important;
+  }
+
+  .nav-item.mobile-open .mega-menu,
+  .nav-item.mobile-open .mega-menu-inspirations,
+  .nav-item.mobile-open .mega-menu-about,
+  .nav-item.mobile-open .mega-menu-destinations {
+    display: block !important;
+  }
+
+  .mega-grid-3col, 
+  .mega-grid-2col, 
+  .mega-grid-destinations, 
+  .mega-inspirations-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+    padding: 0.8rem 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .mega-inspiration-card {
+    width: 100% !important;
+  }
+
+  .inspiration-img-wrap {
+    height: 140px !important;
+  }
+
+  .mega-sublink-grid {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .mega-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero Section */
+  .hero-slider-section {
+    height: 540px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-controls {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  /* Welcome Section Collage */
+  .welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .welcome-collage-wrap {
+    padding: 0;
+  }
+
+  .welcome-collage {
+    height: 440px;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .collage-main-frame {
+    width: 85%;
+    height: 320px;
+  }
+
+  .collage-secondary-frame {
+    width: 65%;
+    height: 240px;
+  }
+
+  .collage-badge-experience {
+    left: 10px;
+    bottom: -15px;
+    top: auto;
+  }
+
+  /* Destination Carousel */
+  .destination-card {
+    flex: 0 0 calc((100cqw - 2.25rem) / 3);
+    width: calc((100cqw - 2.25rem) / 3);
+    height: 200px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-us-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Popular Tours */
+  .tours-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scorecard-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .score-col {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+  }
+
+  .badges-col {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+  }
+
+  #reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .visas-grid, .climat-grid, .unesco-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .choice-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+
+
+  .region-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .founder-card {
+    padding: 2.5rem 1.8rem;
+  }
+
+  .about-experience-badge {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: -30px;
+    max-width: 100%;
+  }
+
+  .tour-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .booking-widget-card {
+    position: static;
+  }
+
+  .religions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .castes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline-container {
+    padding-left: 1.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. MOBILE LANDSCAPE & SMALL TABLETS (Under 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .top-bar-container {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .top-bar-contact {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 0.78rem;
+    width: 100%;
+  }
+
+  .top-bar-item {
+    word-break: break-all;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .top-bar-announcement {
+    font-size: 0.76rem;
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.35;
+  }
+
+  .top-bar-social {
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+
+  .brand-logo-img {
+    height: 44px;
+    max-width: 100%;
+  }
+
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* Highlights & Features Grid */
+  .welcome-highlights {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  /* Interactive Filter Tabs */
+  .filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.6rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* Popular Tours & Blog Grids */
+  .tours-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-col-8, .grid-col-4, .grid-col-6 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. MOBILE SMALL (Under 575px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 575px) {
+  .hero-slider-section {
+    height: 500px;
+  }
+
+  .hero-badge {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+
+  .hero-inspired-search {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-top: 1.2rem;
+  }
+
+  .inspired-search-bar {
+    padding: 0.7rem 0.9rem !important;
+  }
+
+  .inspired-search-bar .hero-search-input {
+    font-size: 0.88rem !important;
+    min-width: 0 !important;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+  }
+
+  .hero-controls {
+    right: 1rem;
+    bottom: 1rem;
+    gap: 0.8rem;
+  }
+
+  .hero-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+
+  /* Destination Carousel */
+  .destination-card {
+    flex: 0 0 calc((100cqw - 0.75rem) / 2);
+    width: calc((100cqw - 0.75rem) / 2);
+    height: 190px;
+  }
+
+  .carousel-header-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .carousel-arrows {
+    align-self: flex-end;
+  }
+
+  /* Welcome Section Collage */
+  .welcome-lead-banner {
+    font-size: 0.88rem;
+    padding: 0.65rem 1rem;
+  }
+
+  .welcome-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .welcome-actions .btn {
+    justify-content: center;
+  }
+
+  .welcome-collage {
+    height: 340px;
+  }
+
+  .collage-main-frame {
+    width: 88%;
+    height: 240px;
+  }
+
+  .collage-secondary-frame {
+    width: 65%;
+    height: 180px;
+    bottom: 10px;
+  }
+
+  .collage-badge-experience {
+    left: 10px;
+    bottom: -15px;
+    top: auto;
+    padding: 0.45rem 0.95rem;
+  }
+
+  .collage-badge-number {
+    font-size: 1.8rem;
+  }
+
+  .collage-badge-text {
+    font-size: 0.72rem;
+  }
+
+  .collage-badge-floating-tag {
+    top: 10px;
+    right: 10px;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* CTA Banner */
+  .cta-banner-section {
+    padding: 4.5rem 0;
+  }
+
+  .cta-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  /* Floating Widgets */
+  .floating-whatsapp {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .scroll-to-top {
+    bottom: 4.8rem;
+    right: 1.2rem;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  /* Reviews & Scorecard Mobile Small */
+  .metrics-col {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .reviews-filter-bar {
+    padding: 1rem;
+  }
+
+  .reviews-search-box {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .reviews-cta-card {
+    padding: 2.2rem 1.2rem;
+  }
+
+  .contact-form-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .kpi-grid, .religions-grid, .castes-grid, .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visas-main-card, .visas-sidebar-card, .climat-card, .castes-box {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .about-image {
+    height: 280px;
+  }
+
+  .founder-img {
+    width: 180px;
+    height: 190px;
+  }
+
+  .tour-detail-meta {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .itinerary-day-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .why-us-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-grid, .choice-card-grid, .region-cards-grid, .process-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .form-card-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-step-progress {
+    margin-bottom: 2rem;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .step-label {
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  .mesure-cta-callout {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. MICRO SCREENS & FOLDABLES (Under 380px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 0.85rem !important;
+  }
+
+  .brand-logo-img {
+    height: 38px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .welcome-title {
+    font-size: 1.4rem;
+  }
+
+  .destination-card {
+    flex: 0 0 100%;
+    height: 260px;
+  }
+
+  .editorial-card-title {
+    font-size: 1.25rem;
+  }
+
+  .reviews-search-box,
+  .tours-search-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .nav-menu {
+    max-width: 90vw !important;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+}
