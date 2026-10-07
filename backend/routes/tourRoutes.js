@@ -4,10 +4,6 @@ import Tour from '../models/Tour.js';
 import { isMongoConnected, memoryStore } from '../store.js';
 import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
-
-
-
-
 const router = express.Router();
 
 const createSlug = (text) => {
