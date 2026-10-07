@@ -4,6 +4,10 @@ import Tour from '../models/Tour.js';
 import { isMongoConnected, memoryStore } from '../store.js';
 import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
+
+
+
+
 const router = express.Router();
 
 const createSlug = (text) => {
@@ -34,7 +38,7 @@ const normalizeBlogToTour = (blog) => {
   const doc = blog && blog.toObject ? blog.toObject() : (blog || {});
   const cleanTitle = stripHtmlTags(doc.title) || 'Circuit Blog';
   const cleanExcerpt = stripHtmlTags(doc.excerpt || doc.summary || doc.subtitle || '').trim();
-  
+
   let rawContent = doc.overview || doc.content || doc.excerpt || doc.summary || doc.subtitle || '';
   let cleanOverview = cleanHtml(rawContent);
 
@@ -78,11 +82,11 @@ const normalizeBlogToTour = (blog) => {
   const validHighlights = Array.isArray(doc.tags) && doc.tags.length > 0 && doc.tags.some(t => typeof t === 'string' && t.trim().length > 3)
     ? doc.tags
     : [
-        `Circuit 100% privatif et personnalisable à ${doc.category || 'destination'}`,
-        'Chauffeur privé expérimenté & véhicule climatisé',
-        'Hébergements de charme avec petits-déjeuners inclus',
-        'Assistance locale francophone 24h/24 et 7j/7'
-      ];
+      `Circuit 100% privatif et personnalisable à ${doc.category || 'destination'}`,
+      'Chauffeur privé expérimenté & véhicule climatisé',
+      'Hébergements de charme avec petits-déjeuners inclus',
+      'Assistance locale francophone 24h/24 et 7j/7'
+    ];
 
   const defaultSeoTitle = doc.seoTitle || `${cleanTitle} | Circuit ${doc.readTime || doc.duration || ''} | Jodhpur Voyage`;
   const defaultSeoKeywords = doc.seoKeywords || `${cleanTitle.toLowerCase()}, circuit ${doc.category?.toLowerCase() || 'inde'}, voyage sur mesure, chauffeur prive inde`;
